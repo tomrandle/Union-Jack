@@ -2,18 +2,88 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>HTML5 boilerplate – all you really need…</title>
+    <title>SVG Union Jack</title>
     <link rel="stylesheet" href="css/style.css">
     <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <script src="js/raphael-min.js"></script>
+
+    <style type="text/css">
+		html {background: #ECF8F8;}
+		body {font-family:'trebuchet ms'; color: #32364B; text-align: center;}
+		#wrapper {width:600px; margin: 0 auto;}
+		h1 {font-size:116px; margin-bottom: 20px;}
+		a {color: #358ACC !important;}
+		#download-link {margin:30px 0; display: block; font-size: 24px; font-weight: bold;}
+		#download-link:hover {text-decoration: underline;}
+    </style>
+
 </head>
 
 <body id="home">
 
-    <h1>Union Jack</h1>
+	<div id="wrapper">
+	    <h1>Union Jack</h1>
+	    <p>An SVG copy of the Union Jack. Created using the <a href="http://www.jdawiseman.com/papers/union-jack/union-jack.html">following instructions.</a>
+	    <div id="svg-container"></div>
+	    <a id="download-link" href="img/flag.svg">Download SVG</a>
+	</div>
 
-    <p>hello</p>
+
+	<script>
+		var blue = '#000066';
+		var white = '#fff';
+		var red = "#cc0000";
+
+		var paper = Raphael(document.getElementById('svg-container'), 600, 300);
+
+		paper.setStart();
+
+		var rectange = paper.rect(0, 0, 600, 300).attr({
+		    "fill": blue,
+		    "stroke-width": 0
+		});
+
+		var whiteCross = paper.path("M0 100 H250 V0 H350 V100 H600 V200 H350 V300 H250 V200 H0 Z").attr({
+		    fill: white,
+		    "stroke-width": 0
+		});
+
+		var andrewCross = paper.path("M0 0 H67.08 L600 266.46 V300 H532.92 L0 33.54 ").attr({
+		    fill: white,
+		    "stroke-width": 0
+		});
+
+		var andrewCrossRight = paper.path("M0 266.46 V300 H67.08 L600 33.54 V0 H532.92 ").attr({
+		    fill: white,
+		    "stroke-width": 0
+		});
+
+		var georgeCross = paper.path("M0 120 H270 V0 H330 V120 H600 V180 H330 V300 H270 V180 H0 Z").attr({
+		    fill: red,
+		    "stroke-width": 0
+		});
+
+		var diagonalCross = paper.path("M0 0 100 L200 100 H155.28 L0 22.36").attr({
+		    fill: red,
+		    "stroke-width": 0
+		});
+
+		var rightCross = paper.path("M0 300 L200 200 H244.72 L44.72 300").attr({
+		    fill: red,
+		    "stroke-width": 0
+		});
+
+		var anotherCross = rightCross.clone().transform("T355.28 -200 R180");
+		var anotherCrossAgan = diagonalCross.clone().transform("T400 200 R180");
+		var groupedFlag = paper.setFinish();
+
+		//groupedFlag.transform("...S0.25 0.25 0 0");
+
+	</script>
+
 
 </body>
 </html>
